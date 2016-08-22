@@ -68,7 +68,8 @@
 
       // If the toggle isn't a button, wrap it in a <button>
       // Better than adding button role because we don't lose the element's semantics
-      if (this.nodeName.toLowerCase() !== 'button') {
+      // Let's also ensure the toggle doesn't insert a button inside an anchor tag
+      if (this.nodeName.toLowerCase() !== 'button' && this.nodeName.toLowerCase() !== 'a') {
         const { buttonClassname } = config;
 
         $this.wrapInner(`<button type="button" class="${buttonClassname}" aria-expanded="${isExpanded}" aria-controls="${$next.attr('id')}">`);
